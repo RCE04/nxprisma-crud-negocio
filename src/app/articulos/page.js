@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Articulo from '@/components/Articulo'
 import { getArticulos } from '@/lib/actions'
 
@@ -10,18 +11,24 @@ export default async function Home() {
 
     return (
         <div>
-            <Link className='enlace' href="/articulos/new"> Nuevo artículo </Link>
+            <Link className='enlace' href="/articulos/new">
+                <Image src='/nuevo.svg' alt='nuevo' width="20" height="20" />
+                Nuevo artículo
+            </Link>
             {
                 articulos.map((articulo) => (
                     <Articulo key={articulo.id} articulo={articulo} >
                         <Link className='enlace' href={`/articulos/view/${articulo.id}`} >
-                            Ver artículo
+                            <Image src='/ver.svg' alt='nuevo' width="20" height="20" />
+                            Ver
                         </Link>
                         <Link className='enlace' href={`/articulos/edit/${articulo.id}`} >
-                            Editar artículo
+                            <Image src='/editar.svg' alt='nuevo' width="20" height="20" />
+                            Editar
                         </Link>
                         <Link className='enlace' href={`/articulos/delete/${articulo.id}`} >
-                            Eliminar artículo
+                            <Image src='/eliminar.svg' alt='nuevo' width="20" height="20" />
+                            Eliminar
                         </Link>
                     </Articulo>
                 ))

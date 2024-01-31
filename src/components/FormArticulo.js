@@ -1,7 +1,6 @@
 import ListaProveedores from './ListaProveedores'
 import { Suspense } from 'react'
 
-// export const dynamic = 'force-dynamic'
 
 function Form({ children, action, articulo, disabled = false }) {
 
@@ -9,6 +8,7 @@ function Form({ children, action, articulo, disabled = false }) {
         <form action={action} >
             <input type='hidden' name='id' value={articulo?.id} />
             <fieldset disabled={disabled}>
+                <legend># {articulo?.id}</legend>
                 <label htmlFor='nombre'>Nombre</label>
                 <input type='text' id='nombre' name='nombre'
                     placeholder='Nombre'
@@ -25,7 +25,7 @@ function Form({ children, action, articulo, disabled = false }) {
             <Suspense fallback={'Loading ...'}>
                 <ListaProveedores articuloId={articulo?.id} disabled={disabled} />
             </Suspense>
-            { children }
+            {children}
         </form >
     )
 }

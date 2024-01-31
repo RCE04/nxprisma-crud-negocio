@@ -13,7 +13,7 @@ async function page({ params }) {
 
   return (
     <div>
-      <h3>Ver artículo {params.id}</h3>
+      <h3>Ver artículo</h3>
       <Form action={getArticulo} articulo={articulo} disabled={true} >
       </Form>
     </div>

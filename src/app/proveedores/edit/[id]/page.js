@@ -14,7 +14,7 @@ async function page({ params }) {
 
   return (
     <div>
-      <h3>Editar proveedor {params.id}</h3>
+      <h3>Editar proveedor</h3>
       <Form action={editProveedor} proveedor={proveedor} >
         <Button title='Editar proveedor' />
       </Form>

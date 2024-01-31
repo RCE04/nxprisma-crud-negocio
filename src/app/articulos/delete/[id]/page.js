@@ -14,7 +14,7 @@ async function page({ params }) {
 
   return (
     <div>
-      <h3>Eliminar artículo {params.id}</h3>
+      <h3>Eliminar artículo</h3>
       <Form action={deleteArticulo} articulo={articulo} disabled={true} >
         <Button title='Eliminar artículo' />
       </Form>
