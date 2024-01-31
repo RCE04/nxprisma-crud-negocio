@@ -2,6 +2,8 @@ import Form from "@/components/FormArticulo"
 import Button from "@/components/Button"
 import { newArticulo } from "@/lib/actions"
 
+export const dynamic = 'force-dynamic'
+
 function page() {
   return (
     <div>
