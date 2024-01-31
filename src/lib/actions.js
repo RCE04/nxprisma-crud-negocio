@@ -45,26 +45,6 @@ export async function getArticulo(id) {  // obtener artículo con proveedores
 }
 
 
-/* 
-// EJEMPLO ACTUALIZACIÓN
-const result = await prisma.articulo.update({
-  where: {
-    id: 16,
-  },
-  include: {
-    proveedores: true,
-  },
-  data: {
-    proveedores: {
-      connect: [{id: 4}, {id: 5}],
-      disconnect: [{ id: 12 }, { id: 19 }],
-    },
-  },
-
-})
-
-*/
-
 
 export async function newArticulo(formData) {
   try {
@@ -107,6 +87,25 @@ export async function newArticulo(formData) {
 }
 
 
+/* 
+// EJEMPLO ACTUALIZACIÓN
+const result = await prisma.articulo.update({
+  where: {
+    id: 16,
+  },
+  include: {
+    proveedores: true,
+  },
+  data: {
+    proveedores: {
+      connect: [{id: 4}, {id: 5}],
+      disconnect: [{ id: 12 }, { id: 19 }],
+    },
+  },
+
+})
+
+*/
 
 export async function editArticulo(formData) {
   const id = Number(formData.get('id'))
@@ -119,19 +118,19 @@ export async function editArticulo(formData) {
   console.log('IDs ', ids);
 
   // Array con IDs de proveedores marcados por el usuario
-  const checks = ids.map(x => formData.get(x.toString()))
-    .filter(x => x !== null)
-    .map(x => Number(x))
+  const checks = ids.map(id => formData.get(id.toString()))
+    .filter(id => id !== null)
+    .map(id => Number(id))
   console.log('CHECKS ', checks);
 
   // Array de objetos con IDs de proveedores a conectar al artículo
-  const connect = checks.map(x => { return { id: Number(x) } })
+  const connect = checks.map(id => { return { id: Number(id) } })
   console.log('CONNECT ', connect);
 
   // Array de objetos con IDs de proveedores a desconectar del artículo
   // https://stackoverflow.com/questions/1187518/how-to-get-the-difference-between-two-arrays-in-javascript
-  const difference = ids.filter(x => !checks.includes(x));
-  const disconnect = difference.map(x => { return { id: Number(x) } })
+  const difference = ids.filter(id => !checks.includes(id));
+  const disconnect = difference.map(id => { return { id: Number(id) } })
   console.log('DISCONNECT ', disconnect);
 
   try {
